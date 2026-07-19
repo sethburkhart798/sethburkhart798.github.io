@@ -1662,6 +1662,9 @@ h1, h2, h3 { font-weight: 800; }
   height: clamp(580px, 96vh, 940px);
   /* mirror shot: flip so the gym signage reads correctly */
   transform: scaleX(-1);
+  /* wider fade window than the default so both arms stay fully visible */
+  -webkit-mask-image: radial-gradient(ellipse 92% 85% at 50% 45%, #000 55%, transparent 88%);
+  mask-image: radial-gradient(ellipse 92% 85% at 50% 45%, #000 55%, transparent 88%);
 }
 /* Widen the hero photo across the section */
 @media (min-width: 901px) {
