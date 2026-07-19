@@ -1648,6 +1648,13 @@ h1, h2, h3 { font-weight: 800; }
   /* mirror shot: flip so the gym signage reads correctly */
   transform: scaleX(-1);
 }
+/* Widen the hero photo so it reaches further left across the section */
+@media (min-width: 901px) {
+  .hero .hero-media img {
+    width: min(56vw, 880px);
+    object-fit: cover;
+  }
+}
 @media (max-width: 900px) {
   .hero .hero-media,
   .sec-about .hero-media { justify-content: center; padding-right: 0; }
