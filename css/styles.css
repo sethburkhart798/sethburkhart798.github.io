@@ -1551,16 +1551,16 @@ h1, h2, h3 { font-weight: 800; }
   pointer-events: none;
 }
 .hero-media img {
-  height: 72%;
+  height: clamp(420px, 72vh, 700px);
   width: auto;
   max-width: none;
-  opacity: 0.3;
+  opacity: 0.38;
   transform: none;
   animation: none;
   filter: saturate(0.95);
   object-position: 50% 25%;
-  -webkit-mask-image: radial-gradient(ellipse 70% 85% at 50% 45%, #000 45%, transparent 75%);
-  mask-image: radial-gradient(ellipse 70% 85% at 50% 45%, #000 45%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 85% at 50% 45%, #000 48%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 85% at 50% 45%, #000 48%, transparent 78%);
 }
 
 /* ---------- iOS-style app tiles in the experience rows ---------- */
@@ -1619,17 +1619,6 @@ h1, h2, h3 { font-weight: 800; }
 
 /* ---------- Faint photo layers (2026-07-19) ---------- */
 .band-media img { opacity: 0.38; }
-.sec-about::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../assets/img/coach-hero-clean.jpg") 50% 48% / cover no-repeat;
-  transform: scaleX(-1);
-  opacity: 0.25;
-  pointer-events: none;
-  -webkit-mask-image: radial-gradient(ellipse 55% 100% at 14% 45%, #000 50%, transparent 82%);
-  mask-image: radial-gradient(ellipse 55% 100% at 14% 45%, #000 50%, transparent 82%);
-}
 
 /* Band photo was invisible under the old scrim: lift it */
 .band-media img {
