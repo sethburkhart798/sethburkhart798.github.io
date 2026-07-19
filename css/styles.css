@@ -1582,11 +1582,13 @@ h1, h2, h3 { font-weight: 800; }
 }
 .qa-row h3 { grid-column: 1; }
 .qa-row p { grid-column: 2; }
-.qa-ic-1 { background: linear-gradient(180deg, #4E9CFF, #2563EB); }
-.qa-ic-2 { background: linear-gradient(180deg, #A78BFA, #7C3AED); }
-.qa-ic-3 { background: linear-gradient(180deg, #5DE884, #22B14C); }
-.qa-ic-4 { background: linear-gradient(180deg, #FFB03A, #F97316); }
-.qa-ic-5 { background: linear-gradient(180deg, #FB7185, #E11D48); }
+/* Section icons: no fill color — quiet outline tiles */
+.qa-ic {
+  background: none;
+  box-shadow: none;
+  border: 1.6px solid rgba(245, 242, 234, 0.28);
+  color: rgba(245, 242, 234, 0.75);
+}
 @media (max-width: 760px) {
   .qa-row { grid-template-columns: minmax(0, 1fr) auto; }
   .qa-row h3 { grid-column: 1; grid-row: 1; align-self: center; }
@@ -1651,8 +1653,11 @@ h1, h2, h3 { font-weight: 800; }
 .sec-about .hero-media img {
   height: clamp(520px, 82vh, 800px);
 }
-/* Hero: same treatment, centered and a touch larger */
-.hero .hero-media { justify-content: center; }
+/* Hero: same treatment, shifted right so the headline clears the face */
+.hero .hero-media {
+  justify-content: flex-end;
+  padding-right: clamp(0.5rem, 3vw, 3rem);
+}
 .hero .hero-media img {
   height: clamp(580px, 96vh, 940px);
   /* mirror shot: flip so the gym signage reads correctly */
