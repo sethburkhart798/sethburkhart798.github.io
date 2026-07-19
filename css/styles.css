@@ -1644,7 +1644,7 @@ h1, h2, h3 { font-weight: 800; }
   height: clamp(520px, 82vh, 800px);
 }
 .hero .hero-media img {
-  height: clamp(480px, 76vh, 740px);
+  height: clamp(560px, 92vh, 900px);
   /* mirror shot: flip so the gym signage reads correctly */
   transform: scaleX(-1);
 }
