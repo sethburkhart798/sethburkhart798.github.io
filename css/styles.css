@@ -1616,3 +1616,29 @@ h1, h2, h3 { font-weight: 800; }
 }
 .qa-ic--sm { width: 46px; height: 46px; border-radius: 12px; flex: none; }
 .get-head h3 { margin-bottom: 0; }
+
+/* ---------- Faint photo layers (2026-07-19) ---------- */
+.band-media img { opacity: 0.38; }
+.sec-about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/img/coach-hero-clean.jpg") 78% 22% / cover no-repeat;
+  opacity: 0.12;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 75% 90% at 65% 40%, #000 40%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 90% at 65% 40%, #000 40%, transparent 78%);
+}
+
+/* Band photo was invisible under the old scrim: lift it */
+.band-media img {
+  opacity: 0.55;
+  object-position: 50% 85%;
+  transform: scale(1.15);
+  filter: saturate(1.05) contrast(1.05) brightness(0.95);
+}
+.band-scrim {
+  background:
+    linear-gradient(to bottom, rgba(16, 17, 19, 0.8) 0%, rgba(16, 17, 19, 0.42) 45%, rgba(16, 17, 19, 0.85) 100%),
+    linear-gradient(100deg, rgba(16, 17, 19, 0.55) 0%, rgba(16, 17, 19, 0.05) 70%);
+}
