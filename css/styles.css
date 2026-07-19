@@ -1634,20 +1634,8 @@ h1, h2, h3 { font-weight: 800; }
 }
 
 /* ---------- Per-section photo treatments ---------- */
-/* Hero: full-bleed background, face + upper body framed */
-.hero .hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* photo is a mirror shot: flip so the gym signage reads correctly
-     and Seth lands right of the left-aligned headline */
-  transform: scaleX(-1);
-  object-position: 0% 40%;
-  opacity: 0.5;
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-/* About: bigger figure, placed right of the text */
+/* Hero + About: same treatment — figure placed right of the text */
+.hero .hero-media,
 .sec-about .hero-media {
   justify-content: flex-end;
   padding-right: clamp(1rem, 5vw, 4.5rem);
@@ -1655,6 +1643,12 @@ h1, h2, h3 { font-weight: 800; }
 .sec-about .hero-media img {
   height: clamp(520px, 82vh, 800px);
 }
+.hero .hero-media img {
+  height: clamp(480px, 76vh, 740px);
+  /* mirror shot: flip so the gym signage reads correctly */
+  transform: scaleX(-1);
+}
 @media (max-width: 900px) {
+  .hero .hero-media,
   .sec-about .hero-media { justify-content: center; padding-right: 0; }
 }
