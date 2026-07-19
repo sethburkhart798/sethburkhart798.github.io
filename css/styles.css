@@ -1582,12 +1582,12 @@ h1, h2, h3 { font-weight: 800; }
 }
 .qa-row h3 { grid-column: 1; }
 .qa-row p { grid-column: 2; }
-/* Section icons: no fill color — quiet outline tiles */
+/* Section icons: no fill color — quiet blue outline tiles */
 .qa-ic {
   background: none;
   box-shadow: none;
-  border: 1.6px solid rgba(245, 242, 234, 0.28);
-  color: rgba(245, 242, 234, 0.75);
+  border: 1.6px solid rgba(96, 165, 250, 0.55);
+  color: var(--blue-bright);
 }
 @media (max-width: 760px) {
   .qa-row { grid-template-columns: minmax(0, 1fr) auto; }
