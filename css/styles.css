@@ -1632,3 +1632,29 @@ h1, h2, h3 { font-weight: 800; }
     linear-gradient(to bottom, rgba(16, 17, 19, 0.8) 0%, rgba(16, 17, 19, 0.42) 45%, rgba(16, 17, 19, 0.85) 100%),
     linear-gradient(100deg, rgba(16, 17, 19, 0.55) 0%, rgba(16, 17, 19, 0.05) 70%);
 }
+
+/* ---------- Per-section photo treatments ---------- */
+/* Hero: full-bleed background, face + upper body framed */
+.hero .hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* photo is a mirror shot: flip so the gym signage reads correctly
+     and Seth lands right of the left-aligned headline */
+  transform: scaleX(-1);
+  object-position: 0% 40%;
+  opacity: 0.5;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+/* About: bigger figure, placed right of the text */
+.sec-about .hero-media {
+  justify-content: flex-end;
+  padding-right: clamp(1rem, 5vw, 4.5rem);
+}
+.sec-about .hero-media img {
+  height: clamp(520px, 82vh, 800px);
+}
+@media (max-width: 900px) {
+  .sec-about .hero-media { justify-content: center; padding-right: 0; }
+}
