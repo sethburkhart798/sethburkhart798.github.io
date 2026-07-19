@@ -1606,6 +1606,15 @@ h1, h2, h3 { font-weight: 800; }
   flex: none;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
+.brand-ic .brand-r {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1;
+  color: #fff;
+  transform: translateY(-1px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
 
 /* ---------- Tiles in the what-you-get cards ---------- */
 .get-head {
@@ -1634,8 +1643,7 @@ h1, h2, h3 { font-weight: 800; }
 }
 
 /* ---------- Per-section photo treatments ---------- */
-/* Hero + About: same treatment — figure placed right of the text */
-.hero .hero-media,
+/* About: figure placed right of the text */
 .sec-about .hero-media {
   justify-content: flex-end;
   padding-right: clamp(1rem, 5vw, 4.5rem);
@@ -1643,15 +1651,17 @@ h1, h2, h3 { font-weight: 800; }
 .sec-about .hero-media img {
   height: clamp(520px, 82vh, 800px);
 }
+/* Hero: same treatment, centered and a touch larger */
+.hero .hero-media { justify-content: center; }
 .hero .hero-media img {
-  height: clamp(560px, 92vh, 900px);
+  height: clamp(580px, 96vh, 940px);
   /* mirror shot: flip so the gym signage reads correctly */
   transform: scaleX(-1);
 }
-/* Widen the hero photo so it reaches further left across the section */
+/* Widen the hero photo across the section */
 @media (min-width: 901px) {
   .hero .hero-media img {
-    width: min(56vw, 880px);
+    width: min(62vw, 960px);
     object-fit: cover;
   }
 }
