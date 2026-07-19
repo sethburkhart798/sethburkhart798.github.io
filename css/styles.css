@@ -1623,11 +1623,11 @@ h1, h2, h3 { font-weight: 800; }
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/img/coach-hero-clean.jpg") 78% 22% / cover no-repeat;
-  opacity: 0.12;
+  background: url("../assets/img/coach-about.jpg") 50% 34% / cover no-repeat;
+  opacity: 0.22;
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(ellipse 75% 90% at 65% 40%, #000 40%, transparent 78%);
-  mask-image: radial-gradient(ellipse 75% 90% at 65% 40%, #000 40%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 95% at 35% 45%, #000 45%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 95% at 35% 45%, #000 45%, transparent 80%);
 }
 
 /* Band photo was invisible under the old scrim: lift it */
