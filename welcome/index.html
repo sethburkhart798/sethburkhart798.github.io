@@ -2,6 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>
+    /* Soft gate: only reachable via the Stripe post-payment redirect, which
+       appends ?session_id=... . Direct visits bounce to the homepage. */
+    (function () {
+      var q = new URLSearchParams(location.search);
+      if (q.has('session_id')) {
+        sessionStorage.setItem('sb-client', '1');
+        history.replaceState(null, '', location.pathname);
+      } else if (!sessionStorage.getItem('sb-client')) {
+        location.replace('/');
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You're In · Seth Burkhart</title>
   <meta name="description" content="Welcome to 1-on-1 coaching with Seth Burkhart. Here's exactly what happens next.">
@@ -125,12 +138,10 @@
             <span class="tl-num" aria-hidden="true">1</span>
             <div class="tl-body">
               <h3>Book your setup call — do this now</h3>
-              <p>Email me three times that work for you this week (include your timezone) and I'll lock one in. This is the only thing you need to do today.</p>
+              <p>Pick a time that works for you — it takes 30 seconds. This is the only thing you need to do today.</p>
               <div class="step-cta">
-                <a class="btn btn-primary" href="mailto:sethburkhartssb@gmail.com?subject=New%20client%20%E2%80%94%20setup%20call&body=Hey%20Seth%2C%20just%20signed%20up.%20Here%20are%20three%20times%20that%20work%20for%20my%20setup%20call%20(my%20timezone%3A%20___)%3A%0A%0A1.%0A2.%0A3.%0A%0AName%3A%20">
-                  <svg width="18" height="18" aria-hidden="true" style="margin-right:.55rem"><use href="#icon-mail"/></svg>Book my setup call
-                </a>
-                <p class="step-alt">Or DM me — <a href="https://www.tiktok.com/@sethburkhart" target="_blank" rel="noopener">@sethburkhart</a> on TikTok · <a href="https://instagram.com/sethsburkhart" target="_blank" rel="noopener">@sethsburkhart</a> on Instagram</p>
+                <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2NfxQU5aKrL24lzTbkv6WbwP9h7-hV-4HC9DQNGYvde_hYt5GwhpIGP5em1MQ3IF85ujKkNvfG" target="_blank" rel="noopener">Book my setup call</a>
+                <p class="step-alt">Can't find a time that works? Email me — <a href="mailto:sethburkhartssb@gmail.com?subject=New%20client%20%E2%80%94%20setup%20call">sethburkhartssb@gmail.com</a></p>
               </div>
             </div>
           </li>
@@ -138,7 +149,7 @@
             <span class="tl-num" aria-hidden="true">2</span>
             <div class="tl-body">
               <h3>The setup call</h3>
-              <p>We go over all of it: how you currently eat, your schedule, training history, sleep, stress, and what you actually want out of this. No judgment — I just need the real picture, because your plan gets built from it.</p>
+              <p>We meet on Google Meet — the link comes with your booking confirmation. We go over all of it: how you currently eat, your schedule, training history, sleep, stress, and what you actually want out of this. No judgment — I just need the real picture, because your plan gets built from it.</p>
             </div>
           </li>
           <li class="tl-item">
@@ -226,9 +237,9 @@
       <div class="container band-inner">
         <p class="kicker"><span class="kicker-bar" aria-hidden="true"></span>One thing to do today</p>
         <h2 class="band-title">Book your setup call</h2>
-        <p class="band-sub">Send me three times that work this week. Everything starts from that call.</p>
+        <p class="band-sub">Pick a time, get a Google Meet link, done. Everything starts from that call.</p>
         <div class="band-cta">
-          <a class="btn btn-primary btn-lg" href="mailto:sethburkhartssb@gmail.com?subject=New%20client%20%E2%80%94%20setup%20call&body=Hey%20Seth%2C%20just%20signed%20up.%20Here%20are%20three%20times%20that%20work%20for%20my%20setup%20call%20(my%20timezone%3A%20___)%3A%0A%0A1.%0A2.%0A3.%0A%0AName%3A%20">Email Seth now</a>
+          <a class="btn btn-primary btn-lg" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2NfxQU5aKrL24lzTbkv6WbwP9h7-hV-4HC9DQNGYvde_hYt5GwhpIGP5em1MQ3IF85ujKkNvfG" target="_blank" rel="noopener">Pick my time now</a>
         </div>
       </div>
     </section>
