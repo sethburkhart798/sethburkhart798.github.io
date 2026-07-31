@@ -234,9 +234,19 @@ h1, h2, h3 { font-weight: 800; }
   margin-inline: auto;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-block: 0.9rem;
 }
+.header-brand {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--bone);
+}
+.header-brand:hover { color: var(--blue-bright); }
 .brand {
   display: inline-flex;
   align-items: center;
@@ -1228,28 +1238,45 @@ h1, h2, h3 { font-weight: 800; }
 .sec.light .about-body p:first-child { color: var(--bone); }
 
 /* ---------- What you get ---------- */
-.get-grid {
+.get-matrix {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
-.get-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  transition: border-color 0.2s ease-out, transform 0.2s ease-out;
+.get-cell {
+  background: var(--black);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  transition: background-color 0.2s ease-out;
 }
-.get-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
-.get-card h3 {
+.get-cell:hover { background: var(--black-2); }
+.get-cell-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--blue-bright);
+}
+.get-num {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--bone-dim);
+  font-variant-numeric: tabular-nums;
+}
+.get-cell h3 {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  margin-bottom: 0.55rem;
 }
-.get-card p { font-size: var(--text-sm); line-height: 1.6; }
+.get-cell p { font-size: var(--text-sm); line-height: 1.6; max-width: 36em; }
+@media (max-width: 719px) {
+  .get-matrix { grid-template-columns: 1fr; }
+}
 .get-foot {
   margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
   display: flex;
@@ -1360,7 +1387,7 @@ h1, h2, h3 { font-weight: 800; }
   margin-bottom: 1.1rem;
   padding: 0.5em 1.1em;
   border: 1px solid var(--line-strong);
-  border-radius: 999px;
+  border-radius: 2px;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -1387,17 +1414,17 @@ h1, h2, h3 { font-weight: 800; }
 .check-trio li {
   display: inline-flex;
   align-items: center;
-  gap: 0.55em;
+  gap: 1.5rem;
   font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--bone-dim);
 }
-.check-trio li::before {
+.check-trio li + li::before {
   content: "";
-  width: 0.55em;
-  height: 0.3em;
-  border-left: 2px solid var(--blue-bright);
-  border-bottom: 2px solid var(--blue-bright);
-  transform: rotate(-45deg) translateY(-15%);
+  width: 1px;
+  height: 0.9em;
+  background: var(--line-strong);
   flex: none;
 }
 
@@ -1501,7 +1528,7 @@ h1, h2, h3 { font-weight: 800; }
   padding: 0.75rem 1.6rem;
   background: transparent;
   border: 1px solid var(--line-strong);
-  border-radius: 999px;
+  border-radius: 2px;
   color: var(--bone-dim);
   font-family: var(--font-body);
   font-size: clamp(0.88rem, 0.78rem + 0.35vw, 1.05rem);
@@ -1563,7 +1590,7 @@ h1, h2, h3 { font-weight: 800; }
   mask-image: radial-gradient(ellipse 70% 85% at 50% 45%, #000 48%, transparent 78%);
 }
 
-/* ---------- iOS-style app tiles in the experience rows ---------- */
+/* ---------- Icons in the experience rows: bare monoline, no tiles ---------- */
 .qa-row {
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr) auto;
   align-items: start;
@@ -1572,27 +1599,19 @@ h1, h2, h3 { font-weight: 800; }
 .qa-ic {
   grid-column: 3;
   grid-row: 1;
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
   display: grid;
   place-items: center;
-  color: #fff;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  align-self: start;
+  margin-top: 0.15em;
+  color: var(--blue-bright);
+  opacity: 0.9;
 }
 .qa-row h3 { grid-column: 1; }
 .qa-row p { grid-column: 2; }
-/* Section icons: no fill color — quiet blue outline tiles */
-.qa-ic {
-  background: none;
-  box-shadow: none;
-  border: 1.6px solid rgba(96, 165, 250, 0.55);
-  color: var(--blue-bright);
-}
 @media (max-width: 760px) {
   .qa-row { grid-template-columns: minmax(0, 1fr) auto; }
   .qa-row h3 { grid-column: 1; grid-row: 1; align-self: center; }
-  .qa-ic { grid-column: 2; grid-row: 1; width: 48px; height: 48px; border-radius: 12px; }
+  .qa-ic { grid-column: 2; grid-row: 1; margin-top: 0; align-self: center; }
   .qa-row p { grid-column: 1 / -1; grid-row: 2; }
 }
 
@@ -1618,16 +1637,6 @@ h1, h2, h3 { font-weight: 800; }
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .brand-ic .brand-r--sm { font-size: 12.5px; letter-spacing: -0.01em; }
-
-/* ---------- Tiles in the what-you-get cards ---------- */
-.get-head {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 0.7rem;
-}
-.qa-ic--sm { width: 46px; height: 46px; border-radius: 12px; flex: none; }
-.get-head h3 { margin-bottom: 0; }
 
 /* ---------- Faint photo layers (2026-07-19) ---------- */
 .band-media img { opacity: 0.38; }
