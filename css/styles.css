@@ -23,7 +23,7 @@
   --line: rgba(230, 225, 214, 0.14);
   --line-strong: rgba(230, 225, 214, 0.3);
 
-  --font-display: "Rubik", "Helvetica Neue", sans-serif;
+  --font-display: "Albert Sans", "Helvetica Neue", sans-serif;
   --font-body: "Albert Sans", "Helvetica Neue", sans-serif;
 
   /* Fluid type scale (~1.2 -> ~1.333) */
@@ -31,13 +31,13 @@
   --text-sm: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
   --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   --text-lg: clamp(1.125rem, 1.02rem + 0.5vw, 1.4375rem);
-  --display-hero: clamp(3.25rem, 9.5vw, 8.25rem);
-  --display-1: clamp(2.5rem, 1.5rem + 4.8vw, 5.75rem);
+  --display-hero: clamp(2.75rem, 2rem + 3.6vw, 4.75rem);
+  --display-1: clamp(1.9rem, 1.5rem + 1.8vw, 3rem);
   --display-2: clamp(1.375rem, 1.2rem + 0.9vw, 2rem);
   --display-stat: clamp(2.5rem, 1.8rem + 3vw, 4.25rem);
 
   /* Space scale - section rhythm varies on purpose */
-  --sp-sect: clamp(6.5rem, 5rem + 9vw, 13rem);
+  --sp-sect: clamp(5rem, 4rem + 6vw, 9rem);
   --sp-sect-tight: clamp(3.5rem, 3rem + 3vw, 5.5rem);
   --sp-head: clamp(2.75rem, 2rem + 4vw, 5.5rem);
 
@@ -64,19 +64,6 @@ body {
 }
 img { max-width: 100%; display: block; }
 button { font: inherit; }
-
-/* Film grain over everything */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: var(--grain);
-  background-size: 180px 180px;
-  opacity: 0.055;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 2000;
-}
 
 ::selection { background: var(--ember); color: var(--black); }
 
@@ -130,9 +117,10 @@ h1, h2, h3 { font-weight: 800; }
 
 .sec-title {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--display-1);
-  line-height: 1.05;
-  letter-spacing: -0.005em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   text-transform: none;
   color: var(--bone);
   max-width: 14em;
@@ -311,27 +299,21 @@ h1, h2, h3 { font-weight: 800; }
   margin-top: clamp(1.1rem, 2.5vh, 2rem);
   font-family: var(--font-display);
   font-size: var(--display-hero);
-  line-height: 1.04;
-  letter-spacing: -0.005em;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   color: var(--bone);
-  max-width: 9.5em;
+  max-width: 12em;
+  animation: title-in 0.7s ease-out 150ms both;
 }
-.hero-title .w {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-  padding-bottom: 0.04em;
-  margin-bottom: -0.04em;
-}
+.hero-title .w,
 .hero-title .w > span {
-  display: inline-block;
-  transform: translateY(112%);
-  animation: word-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(180ms + var(--i) * 95ms);
+  display: inline;
+  transform: none;
+  animation: none;
 }
-.hero-title .w-ember > span { color: var(--blue-bright); }
-@keyframes word-up {
-  to { transform: translateY(0); }
+@keyframes title-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
 }
 .hero-foot {
   display: grid;
@@ -952,9 +934,10 @@ h1, h2, h3 { font-weight: 800; }
 .band-title {
   margin-top: clamp(1.25rem, 2.5vw, 2rem);
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 2rem + 8vw, 9rem);
-  line-height: 1.05;
-  letter-spacing: -0.005em;
+  font-weight: 700;
+  font-size: var(--display-1);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--bone);
 }
 .band-sub {
@@ -1510,7 +1493,7 @@ h1, h2, h3 { font-weight: 800; }
 .social-btn[data-social="email"] .icon { color: #EA4335; }
 
 /* Baloo 2 needs explicit weight where Anton was naturally heavy */
-.brand, .footer-name, .voucher-code, .tl-num, .why-num, .step-num, .hero-title { font-weight: 800; }
+.brand, .footer-name, .voucher-code, .tl-num, .why-num, .step-num, .hero-title { font-weight: 700; }
 
 /* ---------- Biohackr chip in the hero ---------- */
 .hero-bh {
