@@ -409,7 +409,12 @@ function setupForm(form, C) {
         headers: { "Accept": "application/json", "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      // FormSubmit answers HTTP 200 even when it rejects the submission
+      // (e.g. unactivated email), so the body's success flag is the truth.
+      const out = await res.json().catch(() => null);
+      if (!res.ok || !out || String(out.success) !== "true") {
+        throw new Error(out && out.message ? out.message : "HTTP " + res.status);
+      }
       form.innerHTML =
         '<div class="form-success">' +
         "<h3>Application sent</h3>" +

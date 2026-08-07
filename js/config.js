@@ -19,10 +19,12 @@ const CONFIG = {
   },
 
   // 1-on-1 Coaching — CTAs open the application popup. Submissions are
-  // emailed via FormSubmit; the FIRST submission triggers a one-time
-  // activation email to this address (click "Activate" in it once).
+  // emailed via FormSubmit. If this address ever changes, FormSubmit sends a
+  // one-time activation email to the NEW address and silently drops every
+  // submission until "Activate" is clicked in it — always send a test
+  // application and confirm it lands in the inbox after changing this.
   coaching: {
-    formAction: "https://formsubmit.co/ajax/sethburkhartssb@gmail.com"
+    formAction: "https://formsubmit.co/ajax/sethburkhart798@gmail.com"
   },
 
   // 45-minute paid consulting call
