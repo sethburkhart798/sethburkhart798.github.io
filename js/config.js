@@ -24,7 +24,7 @@ const CONFIG = {
   // submission until "Activate" is clicked in it — always send a test
   // application and confirm it lands in the inbox after changing this.
   coaching: {
-    formAction: "https://formsubmit.co/ajax/sethburkhart798@gmail.com"
+    formAction: "https://formsubmit.co/ajax/sethburkhartssb@gmail.com"
   },
 
   // 45-minute paid consulting call
