@@ -37,7 +37,7 @@ const CONFIG = {
   // Fatloss Blueprint digital product
   blueprint: {
     name: "Fat Loss Blueprint",
-    price: "TODO_PRICE", // e.g. "$47"
+    price: "$29",
     url: "TODO_PRODUCT_LINK" // leave as TODO to show the "Coming Soon" state
   },
 
