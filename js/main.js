@@ -415,12 +415,26 @@ function setupForm(form, C) {
       if (!res.ok || !out || String(out.success) !== "true") {
         throw new Error(out && out.message ? out.message : "HTTP " + res.status);
       }
-      form.innerHTML =
-        '<div class="form-success">' +
-        "<h3>Application sent</h3>" +
-        "<p>I read these myself. If it looks like a fit, you'll hear from me at <strong>" +
-        escapeHtml(data.email) + "</strong>.</p>" +
-        "</div>";
+      // "I can't invest right now" → still recorded, but the next step is the Blueprint.
+      const noBudget = /can'?t invest/i.test(data.investment || "");
+      const bpLive = !isTodo(C.blueprint.url);
+      if (noBudget && bpLive) {
+        form.innerHTML =
+          '<div class="form-success">' +
+          "<h3>Got it. Start here instead.</h3>" +
+          "<p>Coaching is a real monthly investment, so start with the <strong>" + escapeHtml(C.blueprint.name) + "</strong>" +
+          (isTodo(C.blueprint.price) ? "" : " for " + escapeHtml(C.blueprint.price)) +
+          ". It is what I say on camera about eating and training for fat loss, in one PDF. When the budget changes, apply again.</p>" +
+          '<a class="btn btn-primary" href="' + escapeHtml(C.blueprint.url) + '" target="_blank" rel="noopener">Get the Blueprint</a>' +
+          "</div>";
+      } else {
+        form.innerHTML =
+          '<div class="form-success">' +
+          "<h3>Application sent</h3>" +
+          "<p>I read these myself. If it looks like a fit, you'll hear from me at <strong>" +
+          escapeHtml(data.email) + "</strong>.</p>" +
+          "</div>";
+      }
       form.scrollIntoView({ block: "center", behavior: "smooth" });
     } catch {
       status.textContent = "That didn't send. Give it another try in a minute.";
