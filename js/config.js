@@ -38,7 +38,7 @@ const CONFIG = {
   blueprint: {
     name: "Fat Loss Blueprint",
     price: "$29",
-    url: "TODO_PRODUCT_LINK" // leave as TODO to show the "Coming Soon" state
+    url: "https://buy.stripe.com/eVq7sDfHS9zb85x19sbV609" // Stripe Payment Link; after-payment redirect -> /blueprint/eavxdk40uj0ugfeo/
   },
 
   // Biohackr Health shop affiliate
