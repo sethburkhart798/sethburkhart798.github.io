@@ -233,12 +233,16 @@ p { margin: 0; }
 .compare .mark { flex: none; width: 20px; height: 20px; margin-top: 0.05rem; color: var(--bone-3); }
 .is-us .compare .mark { color: var(--brass); }
 
-/* three points with icons */
-.points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); margin-top: clamp(2.5rem, 5vw, 4rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--ink-line); }
+/* three points with icons, on the video section */
+.section-video { position: relative; overflow: hidden; isolation: isolate; padding: clamp(4.5rem, 8vw, 8rem) 0; }
+.video-bg { position: absolute; inset: 0; z-index: -2; }
+.video-bg video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.video-tint { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(20, 17, 14, 0.78), rgba(28, 26, 24, 0.72) 50%, rgba(20, 17, 14, 0.82)); }
+.points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); }
 .point { display: grid; gap: 0.6rem; align-content: start; }
-.point-icon { display: inline-flex; width: 2.75rem; height: 2.75rem; align-items: center; justify-content: center; border: 1px solid var(--ink-line-2); color: var(--brass); margin-bottom: 0.25rem; }
+.point-icon { display: inline-flex; width: 2.75rem; height: 2.75rem; align-items: center; justify-content: center; border: 1px solid var(--ink-line-2); color: var(--brass); margin-bottom: 0.25rem; background: rgba(20, 17, 14, 0.5); }
 .point h3 { margin: 0; font-family: var(--serif); font-size: var(--t-2); font-weight: 600; color: var(--bone); letter-spacing: -0.025em; }
-.point p { color: var(--bone-2); font-size: var(--t--1); line-height: 1.55; max-width: 32em; }
+.point p { color: var(--bone); font-size: var(--t--1); line-height: 1.55; max-width: 32em; }
 
 /* cream strip: blueprint */
 .strip { background: var(--cream); color: var(--cream-ink); }
@@ -304,6 +308,8 @@ p { margin: 0; }
 /* ---------- Motion off ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .video-bg video { display: none; }
+  .video-bg { background: url("../video/reel-poster.jpg") center / cover no-repeat; }
   .rise { animation: none; opacity: 1; transform: none; }
   .form-step:not([hidden]) { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
