@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Fat Loss Blueprint · Seth Burkhart</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#14110E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2314110E'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Didot,Bodoni 72,Georgia,serif' font-style='italic' fill='%23C9A45C' text-anchor='middle'%3ESB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Archivo:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#14110E; --bone:#E9E2D0; --bone-2:#B7AE9B; --bone-3:#8F887A; --brass:#C9A45C; --brass-2:#E2C07A; --rule:rgba(233,226,208,.16); --ease:cubic-bezier(.22,1,.36,1); }
+    *,*::before,*::after { box-sizing:border-box }
+    html { -webkit-text-size-adjust:100% }
+    body { margin:0; min-height:100svh; background:var(--ink); color:var(--bone); font-family:"Archivo","Helvetica Neue",Arial,sans-serif; font-size:clamp(1rem,.95rem + .25vw,1.125rem); line-height:1.65; -webkit-font-smoothing:antialiased; display:grid; grid-template-rows:auto 1fr auto }
+    ::selection { background:var(--brass); color:var(--ink) }
+    :focus-visible { outline:2px solid var(--brass); outline-offset:4px }
+    .grain { position:fixed; inset:-50%; width:200%; height:200%; pointer-events:none; z-index:60; opacity:.045; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") }
+    header, footer, main { padding-left:clamp(1.25rem,4vw,4rem); padding-right:clamp(1.25rem,4vw,4rem) }
+    header { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding-top:.9rem; padding-bottom:.9rem; border-bottom:1px solid var(--rule) }
+    .wordmark { font-family:"Bodoni Moda",Didot,Georgia,serif; font-variation-settings:"opsz" 24; font-weight:500; font-size:clamp(1.2rem,1.1rem + .5vw,1.5rem); color:var(--bone); text-decoration:none; display:inline-flex; align-items:center; min-height:2.75rem }
+    .wordmark i { color:var(--brass) }
+    .mono { font-family:"Geist Mono","SF Mono",Menlo,monospace; font-size:clamp(.8rem,.78rem + .1vw,.875rem); letter-spacing:.18em; text-transform:uppercase; color:var(--bone-3); margin:0 }
+    main { display:grid; align-content:center; gap:clamp(1.5rem,1rem + 2.5vw,3rem); padding-top:clamp(2.5rem,1.5rem + 5vw,6rem); padding-bottom:clamp(2.5rem,1.5rem + 5vw,6rem); max-width:60rem }
+    .eyebrow { display:flex; gap:.75rem; align-items:center }
+    .eyebrow::before { content:""; width:1.5rem; height:1px; background:var(--brass) }
+    h1 { font-family:"Bodoni Moda",Didot,Georgia,serif; font-variation-settings:"opsz" 96; font-weight:400; font-size:clamp(2.5rem,1rem + 4.4vw,4.6rem); line-height:.95; letter-spacing:-.03em; margin:0; max-width:14ch; text-wrap:balance }
+    h1 i { color:var(--brass) }
+    .lede { margin:0; color:var(--bone-2); max-width:52ch }
+    .cta { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.6rem; min-height:3.25rem; padding:.85rem 1.75rem; font-family:"Geist Mono","SF Mono",Menlo,monospace; font-size:clamp(.8rem,.78rem + .1vw,.875rem); letter-spacing:.16em; text-transform:uppercase; font-weight:500; border:1px solid var(--brass); text-decoration:none; position:relative; isolation:isolate; overflow:hidden; transition:color 220ms var(--ease),border-color 220ms var(--ease) }
+    .btn::before { content:""; position:absolute; inset:0; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 260ms var(--ease) }
+    .btn-primary { background:var(--brass); color:var(--ink) } .btn-primary::before { background:var(--brass-2) } .btn-primary:hover::before { transform:scaleX(1) }
+    .btn-ghost { border-color:rgba(233,226,208,.34); color:var(--bone-2) } .btn-ghost::before { background:var(--brass) } .btn-ghost:hover { color:var(--ink); border-color:var(--brass) } .btn-ghost:hover::before { transform:scaleX(1) }
+    .steps { list-style:none; margin:0; padding:0; display:grid; max-width:40rem }
+    .steps li { display:grid; grid-template-columns:2.5rem 1fr; gap:.75rem; align-items:baseline; padding:.7rem 0; border-top:1px solid var(--rule); color:var(--bone-2) }
+    .steps li:last-child { border-bottom:1px solid var(--rule) }
+    .steps b { font-family:"Geist Mono",Menlo,monospace; font-weight:500; font-size:.85rem; letter-spacing:.14em; color:var(--brass); font-variant-numeric:tabular-nums }
+    main a { color:var(--brass); text-decoration:underline; text-underline-offset:.2em }
+    .note { margin:0; color:var(--bone-3); font-size:clamp(.8rem,.78rem + .1vw,.875rem); max-width:60ch }
+    footer { border-top:1px solid var(--rule); padding-top:1.25rem; padding-bottom:2rem; display:grid; gap:.35rem; color:var(--bone-3); font-size:clamp(.8rem,.78rem + .1vw,.875rem) }
+    footer p { margin:0 } footer a { color:var(--bone-2) }
+    @media (prefers-reduced-motion: reduce) { .btn,.btn::before { transition:none } }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header>
+    <a class="wordmark" href="https://sethburkhart.co/">Seth <i>Burkhart</i></a>
+    <p class="mono">Fat Loss Blueprint · Delivery</p>
+  </header>
+  <main>
+    <p class="mono eyebrow">Payment received. Thank you.</p>
+    <h1>Your Blueprint is <i>ready.</i></h1>
+    <p class="lede">Everything I teach about eating and training for fat loss, in one document. Download it now and bookmark this page. This link is yours to keep, so you can come back to it any time.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="fat-loss-blueprint.pdf" download="Fat Loss Blueprint - Seth Burkhart.pdf">Download the PDF</a>
+      <a class="btn btn-ghost" href="fat-loss-blueprint.pdf" target="_blank" rel="noopener">Open in browser</a>
+    </div>
+    <ol class="steps" aria-label="How to use it">
+      <li><b>01</b><span>Read section one first. Everything else sits on it.</span></li>
+      <li><b>02</b><span>Set your calories and protein from the numbers in the book, then run it for two weeks before changing anything.</span></li>
+      <li><b>03</b><span>Want it built and checked for you every week? <a href="https://sethburkhart.co/">Apply for 1-on-1 coaching</a>.</span></li>
+    </ol>
+    <p class="note">Trouble downloading? Email <a href="mailto:sethburkhartssb@gmail.com">sethburkhartssb@gmail.com</a> with your Stripe receipt and I will send it over myself.</p>
+  </main>
+  <footer>
+    <p>Educational content. Not medical advice. Results vary and are not typical.</p>
+    <p>&copy; <span id="y">2026</span> Seth Burkhart. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
