@@ -204,6 +204,8 @@ p { margin: 0; }
 .form-success h3 { font-family: var(--serif); font-size: var(--t-2); font-weight: 600; margin: 0; }
 .form-success p { color: var(--cream-ink-2); }
 .form-success strong { color: var(--cream-ink); font-weight: 600; }
+.form-success .btn-primary { background: var(--brass-deep); color: #FBF8F1; justify-self: start; margin-top: 0.4rem; }
+.form-success .btn-primary:hover { background: #74591F; }
 
 /* ---------- Ribbon ---------- */
 .ribbon { background: var(--ink-2); border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); }
