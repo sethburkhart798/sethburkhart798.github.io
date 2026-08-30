@@ -232,8 +232,8 @@ p { margin: 0; }
 .compare li { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.95rem 0; border-bottom: 1px solid var(--ink-line); font-size: var(--t--1); color: var(--bone-2); line-height: 1.45; }
 .compare li:last-child { border-bottom: 0; }
 .is-us .compare li { color: var(--bone); }
-.compare .mark { flex: none; width: 20px; height: 20px; margin-top: 0.05rem; color: var(--bone-3); }
-.is-us .compare .mark { color: var(--brass); }
+.compare .mark { flex: none; width: 20px; height: 20px; margin-top: 0.05rem; color: #C4534A; }
+.is-us .compare .mark { color: #4E9B63; }
 
 /* three points with icons, on the video section */
 .section-video { position: relative; overflow: hidden; isolation: isolate; padding: clamp(4rem, 7vw, 7rem) 0; min-height: min(86vh, 60vw); display: grid; align-items: center; }
