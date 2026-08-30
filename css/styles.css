@@ -236,7 +236,7 @@ p { margin: 0; }
 .is-us .compare .mark { color: var(--brass); }
 
 /* three points with icons, on the video section */
-.section-video { position: relative; overflow: hidden; isolation: isolate; padding: clamp(6rem, 11vw, 11rem) 0; }
+.section-video { position: relative; overflow: hidden; isolation: isolate; padding: clamp(4rem, 7vw, 7rem) 0; min-height: min(86vh, 60vw); display: grid; align-items: center; }
 .video-bg { position: absolute; inset: 0; z-index: -2; }
 .video-bg video { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
 .video-tint { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(20, 17, 14, 0.78), rgba(28, 26, 24, 0.72) 50%, rgba(20, 17, 14, 0.82)); }
