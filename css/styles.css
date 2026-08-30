@@ -233,7 +233,7 @@ p { margin: 0; }
 .compare li:last-child { border-bottom: 0; }
 .is-us .compare li { color: var(--bone); }
 .compare .mark { flex: none; width: 20px; height: 20px; margin-top: 0.05rem; color: #C4534A; }
-.is-us .compare .mark { color: #4E9B63; }
+.compare .is-us .mark, .is-us .mark { color: #4E9B63; }
 
 /* three points with icons, on the video section */
 .section-video { position: relative; overflow: hidden; isolation: isolate; padding: clamp(4rem, 7vw, 7rem) 0; min-height: min(86vh, 60vw); display: grid; align-items: center; }
