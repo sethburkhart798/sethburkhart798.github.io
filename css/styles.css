@@ -152,7 +152,7 @@ p { margin: 0; }
 .card-head { display: grid; gap: 0.35rem; padding-bottom: 1rem; border-bottom: 1px solid var(--cream-line); margin-bottom: 1.1rem; }
 .card-head .eyebrow { color: var(--brass-deep); font-size: 0.7rem; }
 .card-head .eyebrow::before { background: var(--brass-deep); }
-.card-title { font-family: var(--serif); font-size: var(--t-2); font-weight: 600; letter-spacing: -0.025em; margin: 0; line-height: 1.1; font-variation-settings: "wdth" 90; }
+.card-title { font-family: var(--display); font-size: var(--t-2); font-weight: 700; letter-spacing: -0.035em; margin: 0; line-height: 1.1; font-stretch: 112%; font-variation-settings: "wdth" 112; }
 .card-sub { color: var(--cream-ink-3); font-size: var(--t--1); }
 .card-progress { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
 .progress-label { margin: 0; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-ink-3); font-variant-numeric: tabular-nums; }
@@ -163,7 +163,7 @@ p { margin: 0; }
 .form-step { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 0.9rem; scroll-margin-top: 5.5rem; }
 .form-step:not([hidden]) { animation: step-in 420ms var(--ease) both; }
 @keyframes step-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.step-title { padding: 0; margin: 0 0 0.1rem; font-family: var(--serif); font-size: var(--t-1); font-weight: 600; letter-spacing: -0.015em; color: var(--cream-ink); }
+.step-title { padding: 0; margin: 0 0 0.1rem; font-family: var(--display); font-size: var(--t-1); font-weight: 700; letter-spacing: -0.03em; color: var(--cream-ink); font-stretch: 112%; font-variation-settings: "wdth" 112; }
 .step-title .num { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--brass-deep); margin-right: 0.6rem; vertical-align: 0.15em; }
 
 .field { display: grid; gap: 0.35rem; }
@@ -201,7 +201,7 @@ p { margin: 0; }
 .form-status a { text-decoration: underline; }
 .form-fine { color: var(--cream-ink-3); font-size: 0.78rem; line-height: 1.45; text-align: center; }
 .form-success { display: grid; gap: 0.5rem; padding: 0.5rem 0; }
-.form-success h3 { font-family: var(--serif); font-size: var(--t-2); font-weight: 600; margin: 0; }
+.form-success h3 { font-family: var(--display); font-size: var(--t-2); font-weight: 700; margin: 0; font-stretch: 112%; font-variation-settings: "wdth" 112; }
 .form-success p { color: var(--cream-ink-2); }
 .form-success strong { color: var(--cream-ink); font-weight: 600; }
 .form-success .btn-primary { background: var(--brass-deep); color: #FBF8F1; justify-self: start; margin-top: 0.4rem; }
