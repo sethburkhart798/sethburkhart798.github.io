@@ -431,7 +431,7 @@ function setupForm(form, C) {
         form.innerHTML =
           '<div class="form-success">' +
           "<h3>Application sent</h3>" +
-          "<p>I read these myself. If it looks like a fit, you'll hear from me at <strong>" +
+          "<p>Thanks! I'll look this over and you'll hear from me at <strong>" +
           escapeHtml(data.email) + "</strong>.</p>" +
           "</div>";
       }
