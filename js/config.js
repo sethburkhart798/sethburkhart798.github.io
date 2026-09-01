@@ -36,7 +36,7 @@ const CONFIG = {
 
   // Fatloss Blueprint digital product
   blueprint: {
-    name: "Dream Physique Guide",
+    name: "Lean for Good",
     price: "$29",
     url: "https://buy.stripe.com/eVq7sDfHS9zb85x19sbV609" // Stripe Payment Link; after-payment redirect -> /blueprint/eavxdk40uj0ugfeo/
   },
