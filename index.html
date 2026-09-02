@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..800&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=13">
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
 
@@ -94,7 +94,7 @@
             <h2 class="card-title">Apply for 1-on-1 coaching</h2>
           </div>
           <div class="card-progress">
-            <p class="progress-label"><span data-progress-text>Step 1 of 6</span></p>
+            <p class="progress-label"><span data-progress-text>Step 1 of 7</span></p>
             <div class="progress-bar" aria-hidden="true"><span data-progress-fill></span></div>
           </div>
 
@@ -129,15 +129,14 @@
 
             <fieldset class="form-step" data-step="3" hidden>
               <legend class="step-title"><span class="num">03</span>Your goal</legend>
-              <div class="field">
-                <label for="f-goal">Your goal <span class="req" aria-hidden="true">*</span></label>
-                <select id="f-goal" name="goal" required>
-                  <option value="">Pick one</option>
-                  <option>Lose 10 to 20 lbs</option>
-                  <option>Lose 20 to 40 lbs</option>
-                  <option>Lose 40+ lbs</option>
-                  <option>Body recomposition</option>
-                </select>
+              <div class="field field-choices" role="group" aria-labelledby="f-goal-label">
+                <label id="f-goal-label">What can I help with? <span class="req" aria-hidden="true">*</span></label>
+                <p class="field-hint">Choose as many as you like :)</p>
+                <div class="choices">
+                  <label class="choice"><input type="checkbox" name="goal" value="Fat Loss"><span class="choice-key">A</span><span>Fat Loss</span></label>
+                  <label class="choice"><input type="checkbox" name="goal" value="Build Muscle"><span class="choice-key">B</span><span>Build Muscle</span></label>
+                  <label class="choice"><input type="checkbox" name="goal" value="Healthy Lifestyle"><span class="choice-key">C</span><span>Healthy Lifestyle</span></label>
+                </div>
                 <p class="field-error" aria-live="polite"></p>
               </div>
             </fieldset>
@@ -152,22 +151,29 @@
             </fieldset>
 
             <fieldset class="form-step" data-step="5" hidden>
-              <legend class="step-title"><span class="num">05</span>The investment</legend>
+              <legend class="step-title"><span class="num">05</span>Why me</legend>
               <div class="field">
-                <label for="f-investment">Coaching is a serious monthly investment, not a cheap app subscription. Where are you at? <span class="req" aria-hidden="true">*</span></label>
-                <select id="f-investment" name="investment" required>
-                  <option value="">Pick one</option>
-                  <option>Ready to invest, money isn't the obstacle</option>
-                  <option>I'd need to move things around, but I'm in</option>
-                  <option>I can't invest right now</option>
-                </select>
+                <label for="f-why">What made you want to work with me? <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="f-why" name="why" rows="3" required placeholder="What did you see or hear that brought you here?"></textarea>
                 <p class="field-error" aria-live="polite"></p>
               </div>
             </fieldset>
 
-
             <fieldset class="form-step" data-step="6" hidden>
-              <legend class="step-title"><span class="num">06</span>Where I reach you</legend>
+              <legend class="step-title"><span class="num">06</span>The investment</legend>
+              <div class="field field-choices" role="radiogroup" aria-labelledby="f-investment-label">
+                <label id="f-investment-label">This is a high ticket, premium fitness program. Are you in a financial position to invest in your health at this time? <span class="req" aria-hidden="true">*</span></label>
+                <div class="choices">
+                  <label class="choice"><input type="radio" name="investment" value="Yes, absolutely committed and finances are not an issue."><span class="choice-key">A</span><span>Yes, absolutely committed and finances are not an issue.</span></label>
+                  <label class="choice"><input type="radio" name="investment" value="Possibly, depends on the value of the program."><span class="choice-key">B</span><span>Possibly, depends on the value of the program.</span></label>
+                  <label class="choice"><input type="radio" name="investment" value="No. Finances are a real limitation at this moment."><span class="choice-key">C</span><span>No. Finances are a real limitation at this moment.</span></label>
+                </div>
+                <p class="field-error" aria-live="polite"></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="7" hidden>
+              <legend class="step-title"><span class="num">07</span>Where I reach you</legend>
               <div class="form-row">
                 <div class="field">
                   <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
@@ -304,7 +310,7 @@
     </div>
   </footer>
 
-  <script src="js/config.js?v=2"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/config.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
