@@ -186,6 +186,24 @@ p { margin: 0; }
 }
 .field.has-error input, .field.has-error select, .field.has-error textarea { border-color: var(--error); }
 .field-error { margin: 0; min-height: 1.2rem; color: var(--error); font-size: 0.8rem; }
+.field-hint { margin: -0.15rem 0 0.1rem; color: var(--cream-ink-3); font-size: var(--t--1); }
+.choices { display: grid; gap: 0.5rem; }
+.choice {
+  position: relative; display: flex; align-items: center; gap: 0.75rem; min-height: 3rem; padding: 0.65rem 0.85rem;
+  background: #FBF8F1; border: 1px solid rgba(20, 17, 14, 0.18); border-radius: 0; cursor: pointer;
+  font-size: var(--t-0); font-weight: 500; color: var(--cream-ink); line-height: 1.35;
+  transition: border-color 180ms var(--ease), background-color 180ms var(--ease), box-shadow 180ms var(--ease);
+}
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.choice-key {
+  flex: none; width: 1.6rem; height: 1.6rem; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(20, 17, 14, 0.25); font-family: var(--mono); font-size: 0.72rem; color: var(--cream-ink-2);
+}
+.choice:hover { border-color: var(--brass-deep); }
+.choice:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(122, 95, 34, 0.18); border-color: var(--brass-deep); }
+.choice:has(input:checked) { border-color: var(--brass-deep); background: #F1E8D2; }
+.choice:has(input:checked) .choice-key { background: var(--brass-deep); border-color: var(--brass-deep); color: #FBF8F1; }
+.field.has-error .choice { border-color: var(--error); }
 .form-row { display: grid; gap: 0.9rem; }
 .hp-field { display: none; }
 
@@ -206,6 +224,7 @@ p { margin: 0; }
 .form-success strong { color: var(--cream-ink); font-weight: 600; }
 .form-success .btn-primary { background: var(--brass-deep); color: #FBF8F1; justify-self: start; margin-top: 0.4rem; }
 .form-success .btn-primary:hover { background: #74591F; }
+.form-success .form-fine { text-align: left; }
 
 /* ---------- Ribbon ---------- */
 .ribbon { background: var(--ink-2); border-top: 1px solid var(--ink-line); border-bottom: 1px solid var(--ink-line); }
