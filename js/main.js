@@ -270,9 +270,9 @@ function setupForm(form, C) {
     age: "I need your age.",
     phone: "I need a number for the call if we're a fit.",
     work: "Just a few words — it helps me build around your schedule.",
-    goal: "Pick whichever is closest.",
+    goal: "Pick at least one.",
     change: "This one matters. Be honest.",
-    why: "This is your pitch. Don't waste it.",
+    why: "Tell me what brought you here.",
     investment: "Pick whichever is true today."
   };
 
@@ -282,6 +282,14 @@ function setupForm(form, C) {
     if (!field) return true;
     const errEl = field.querySelector(".field-error");
     let msg = "";
+    if (input.type === "checkbox" || input.type === "radio") {
+      const group = field.querySelectorAll('input[name="' + input.name + '"]');
+      const any = [...group].some((c) => c.checked);
+      msg = any ? "" : (requiredMsg[input.name] || "Pick at least one.");
+      field.classList.toggle("has-error", !!msg);
+      errEl.textContent = msg;
+      return !msg;
+    }
     if (input.required && !input.value.trim()) {
       msg = requiredMsg[input.name] || "This one's required.";
     } else if (input.type === "email" && input.value && !/^\S+@\S+\.\S+$/.test(input.value)) {
@@ -303,6 +311,7 @@ function setupForm(form, C) {
       const field = input.closest(".field");
       if (field.classList.contains("has-error")) validateField(input);
     });
+    if (input.type === "checkbox" || input.type === "radio") input.addEventListener("change", () => validateField(input));
   });
 
   /* ---------- Multi-step wiring: easy questions first, contact last ---------- */
@@ -341,11 +350,18 @@ function setupForm(form, C) {
     // One question at a time: answering a dropdown brings up the next question
     steps.forEach((step, i) => {
       const selects = step.querySelectorAll("select");
-      const others = step.querySelectorAll("input:not([type='hidden']), textarea");
+      const radios = step.querySelectorAll("input[type='radio']");
+      const others = step.querySelectorAll("input:not([type='hidden']):not([type='radio']), textarea");
       if (selects.length === 1 && others.length === 0 && i < steps.length - 1) {
         selects[0].addEventListener("change", () => {
           if (validateStep(i)) setTimeout(() => showStep(i + 1), 200);
         });
+      }
+      // Single-choice cards advance on their own too
+      if (radios.length && selects.length === 0 && others.length === 0 && i < steps.length - 1) {
+        radios.forEach((r) => r.addEventListener("change", () => {
+          if (validateStep(i)) setTimeout(() => showStep(i + 1), 250);
+        }));
       }
     });
 
@@ -366,7 +382,10 @@ function setupForm(form, C) {
       return;
     }
 
-    const data = Object.fromEntries(new FormData(form).entries());
+    // Multi-select answers (checkbox groups) arrive as one comma-separated value.
+    const fd = new FormData(form);
+    const data = {};
+    for (const [k, v] of fd.entries()) data[k] = k in data ? data[k] + ", " + v : v;
 
     // No endpoint wired yet → hand off to the visitor's email app (or DMs).
     if (!endpointLive) {
@@ -382,13 +401,14 @@ function setupForm(form, C) {
           "",
           "Why they want to change: " + (data.change || "-"),
           "",
-          "Their pitch: " + (data.why || "-")
+          "Why they want to work with me: " + (data.why || "-")
         ].join("\n");
         location.href = "mailto:" + C.email +
           "?subject=" + encodeURIComponent("Coaching application from " + data.name) +
           "&body=" + encodeURIComponent(body);
         status.textContent = "Opening your email app. Hit send and it's on its way.";
         status.classList.add("is-ok");
+        if (cannotInvest(data) && !isTodo(C.blueprint.url)) setTimeout(() => showSuccess(form, data, C), 1500);
       } else {
         status.innerHTML =
           'Applications open shortly. For now, DM me on ' +
@@ -415,27 +435,7 @@ function setupForm(form, C) {
       if (!res.ok || !out || String(out.success) !== "true") {
         throw new Error(out && out.message ? out.message : "HTTP " + res.status);
       }
-      // "I can't invest right now" → still recorded, but the next step is the Blueprint.
-      const noBudget = /can'?t invest/i.test(data.investment || "");
-      const bpLive = !isTodo(C.blueprint.url);
-      if (noBudget && bpLive) {
-        form.innerHTML =
-          '<div class="form-success">' +
-          "<h3>Got it. Start here instead.</h3>" +
-          "<p>Coaching is a real monthly investment, so start with the <strong>" + escapeHtml(C.blueprint.name) + "</strong>" +
-          (isTodo(C.blueprint.price) ? "" : " for " + escapeHtml(C.blueprint.price)) +
-          ". It is what I say on camera about eating and training for fat loss, in one PDF. When the budget changes, apply again.</p>" +
-          '<a class="btn btn-primary" href="' + escapeHtml(C.blueprint.url) + '" target="_blank" rel="noopener">Get the Blueprint</a>' +
-          "</div>";
-      } else {
-        form.innerHTML =
-          '<div class="form-success">' +
-          "<h3>Application sent</h3>" +
-          "<p>Thanks! I'll look this over and you'll hear from me at <strong>" +
-          escapeHtml(data.email) + "</strong>.</p>" +
-          "</div>";
-      }
-      form.scrollIntoView({ block: "center", behavior: "smooth" });
+      showSuccess(form, data, C);
     } catch {
       status.textContent = "That didn't send. Give it another try in a minute.";
       status.classList.add("is-error");
@@ -443,6 +443,48 @@ function setupForm(form, C) {
       submitBtn.textContent = prevLabel;
     }
   });
+}
+
+/* "No" on the investment question → the applicant can't do coaching right now,
+   so hand them the PDF instead of leaving them at a dead end. */
+function cannotInvest(data) {
+  return /^no\b/i.test(String(data.investment || "").trim());
+}
+
+function showSuccess(form, data, C) {
+  const pdfReady = !isTodo(C.blueprint.url);
+  if (cannotInvest(data) && pdfReady) {
+    const secs = Math.max(0, +C.blueprint.redirectSeconds || 0);
+    form.innerHTML =
+      '<div class="form-success">' +
+      "<h3>Got it. Start here instead.</h3>" +
+      "<p>Coaching isn't the right fit for your budget right now, and that's fine. <strong>" +
+      escapeHtml(C.blueprint.name) + "</strong> is the same system I use with clients, in one PDF" +
+      (isTodo(C.blueprint.price) ? "" : " for " + escapeHtml(C.blueprint.price)) + ". Instant download after checkout.</p>" +
+      '<a class="btn btn-primary" data-cta="pdf-redirect" href="' + escapeHtml(C.blueprint.url) + '">Get ' +
+      escapeHtml(C.blueprint.name) + ' <span class="arrow" aria-hidden="true">&rarr;</span></a>' +
+      (secs ? '<p class="form-fine" data-redirect-note>Taking you to checkout in <b data-redirect-count>' + secs + "</b>s&hellip;</p>" : "") +
+      "</div>";
+    form.scrollIntoView({ block: "center", behavior: "smooth" });
+    if (secs) {
+      let left = secs;
+      const count = form.querySelector("[data-redirect-count]");
+      const timer = setInterval(() => {
+        left -= 1;
+        if (count) count.textContent = left;
+        if (left <= 0) { clearInterval(timer); location.href = C.blueprint.url; }
+      }, 1000);
+      form.querySelector("[data-cta='pdf-redirect']").addEventListener("click", () => clearInterval(timer));
+    }
+    return;
+  }
+  form.innerHTML =
+    '<div class="form-success">' +
+    "<h3>Application sent</h3>" +
+    "<p>Thanks! I'll look this over and you'll hear from me at <strong>" +
+    escapeHtml(data.email) + "</strong>.</p>" +
+    "</div>";
+  form.scrollIntoView({ block: "center", behavior: "smooth" });
 }
 
 function escapeHtml(s) {

@@ -37,8 +37,11 @@ const CONFIG = {
   // Fatloss Blueprint digital product
   blueprint: {
     name: "Lean for Good",
-    price: "$29",
-    url: "https://buy.stripe.com/eVq7sDfHS9zb85x19sbV609" // Stripe Payment Link; after-payment redirect -> /blueprint/eavxdk40uj0ugfeo/
+    price: "", // leave empty to hide the price everywhere on the site (Stripe shows it at checkout)
+    url: "https://buy.stripe.com/eVq7sDfHS9zb85x19sbV609", // Stripe Payment Link; after-payment redirect -> /blueprint/eavxdk40uj0ugfeo/
+    // Applicants who answer "No" on the investment question are sent to this
+    // checkout after they submit, after a short countdown (0 = button only).
+    redirectSeconds: 6
   },
 
   // Biohackr Health shop affiliate
